@@ -103,7 +103,7 @@ xzwifi,creativebox-v1)
 youhua,wr1200js)
 	ucidef_set_led_netdev "internet" "INTERNET" "$boardname:green:wan" "wan"
 	;;
-zte,e8820v2)
+zte,e8820s)
         ucidef_set_led_netdev"sys""SYS_LED" "$boardname:white:sys""eth0" "txrx"
         ucidef_set_led_default"power""POWER_LED" "$boardname:white:power""1"
         ;;
