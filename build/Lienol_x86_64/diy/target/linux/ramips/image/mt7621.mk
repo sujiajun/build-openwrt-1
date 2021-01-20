@@ -719,7 +719,7 @@ define Device/zbt-wg3526-32M
 endef
 TARGET_DEVICES += zbt-wg3526-32M
 
-define Device/zte_e8820s
+define Device/zte-e8820s
   DTS := E8820S
   DEVICE_TITLE := ZTE E8820S
   BLOCKSIZE := 128k
@@ -735,4 +735,4 @@ define Device/zte_e8820s
   DEVICE_MODEL := e8820s
   DEVICE_PACKAGES := kmod-mt7603 kmod-mt76x2 kmod-usb3 wpad-openssl
 endef
-TARGET_DEVICES += zte_e8820s
+TARGET_DEVICES += zte-e8820s
