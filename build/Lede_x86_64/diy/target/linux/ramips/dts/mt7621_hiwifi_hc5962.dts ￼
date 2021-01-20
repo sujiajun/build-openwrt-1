@@ -1,3 +1,4 @@
+
 /dts-v1/;
 
 #include "mt7621.dtsi"
@@ -6,12 +7,14 @@
 #include <dt-bindings/input/input.h>
 
 / {
-	compatible = "zte,e8820s", "mediatek,mt7621-soc";
-	model = "ZTE E8820S";
+	compatible = "hiwifi,hc5962", "mediatek,mt7621-soc";
+	model = "HiWiFi HC5962";
 
 	aliases {
-		led-boot = &led_wps;
-		led-failsafe = &led_wps;
+		led-boot = &led_system;
+		led-failsafe = &led_system;
+		led-running = &led_status;
+		led-upgrade = &led_status;
 	};
 
 	chosen {
@@ -21,43 +24,25 @@
 	leds {
 		compatible = "gpio-leds";
 
-		internet {
-			label = "e8820s:blue:internet";
-			gpios = <&gpio0 6 GPIO_ACTIVE_LOW>;
+		led_status: status {
+			label = "hc5962:white:status";
+			gpios = <&gpio 6 GPIO_ACTIVE_LOW>;
 		};
 
-		led_wps: wps {
-			label = "e8820s:blue:wps";
-			gpios = <&gpio0 7 GPIO_ACTIVE_LOW>;
-		};
-
-		usb {
-			label = "e8820s:blue:usb";
-			gpios = <&gpio0 8 GPIO_ACTIVE_LOW>;
-			trigger-sources = <&xhci_ehci_port1>, <&ehci_port2>;
-			linux,default-trigger = "usbport";
+		led_system: system {
+			label = "hc5962:red:system";
+			gpios = <&gpio 7 GPIO_ACTIVE_LOW>;
+			panic-indicator;
 		};
 	};
 
-    keys {
-        compatible= "gpio-keys-polled";
-        poll-interval= <20>;
+	keys {
+		compatible = "gpio-keys";
 
-        reset{
-			label= "reset";
-			gpios= <&gpio0 18 GPIO_ACTIVE_LOW>;
-			linux,code= <KEY_RESTART>;
-		};
-
-        wps{
-			label= "wps";
-			gpios= <&gpio0 8 GPIO_ACTIVE_LOW>;
-			linux,code= <KEY_WPS_BUTTON>;
-		};
-		wifi {
-			label = "wifi";
-			gpios = <&gpio0 10 GPIO_ACTIVE_LOW>;
-			linux,code = <KEY_RFKILL>;
+		reset {
+			label = "reset";
+			gpios = <&gpio 18 GPIO_ACTIVE_HIGH>;
+			linux,code = <KEY_RESTART>;
 		};
 	};
 
@@ -164,12 +149,11 @@
 			label = "lan3";
 		};
 
-		port@3 {
+		port@4 {
 			status = "okay";
 			label = "lan4";
 		};
-
-		port@4 {
+		port@5 {
 			status = "okay";
 			label = "wan";
 		};
