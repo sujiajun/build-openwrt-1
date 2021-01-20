@@ -455,7 +455,7 @@ youku-yk1)
 	set_wifi_led "$boardname:blue:air"
 	ucidef_set_led_switch "wan" "wan" "$boardname:blue:wan" "switch0" "0x10"
 	;;
-zte,e8820v2)
+e8820s)
         ucidef_set_led_netdev"sys""SYS_LED" "$boardname:white:sys""eth0" "txrx"
         ucidef_set_led_default"power""POWER_LED" "$boardname:white:power""1"
         ;;
