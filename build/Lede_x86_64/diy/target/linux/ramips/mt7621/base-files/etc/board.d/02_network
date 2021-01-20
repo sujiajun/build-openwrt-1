@@ -26,7 +26,7 @@ ramips_setup_interfaces()
 		;;
 	hiwifi,hc5962|\
 	xiaomi,mir3p)
-		ucidef_set_interfaces_lan_wan "lan1 lan2 lan3 ra0 rai0" "wan"
+		ucidef_set_interfaces_lan_wan "lan1 lan2 lan3 lan4 ra0 rai0" "wan"
 		;;
         zte,e8820s)
 		ucidef_set_interfaces_lan_wan "lan1 lan2 lan3 lan4 ra0 rai0" "wan"
