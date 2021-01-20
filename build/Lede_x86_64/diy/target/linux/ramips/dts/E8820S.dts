@@ -164,6 +164,11 @@
 			label = "lan3";
 		};
 
+		port@3 {
+			status = "okay";
+			label = "lan4";
+		};
+
 		port@4 {
 			status = "okay";
 			label = "wan";
