@@ -78,7 +78,7 @@ jobs:
         chmod +x $DIY_P2_SH
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P2_SH
-
+        cp -Rf build/Lienol_x86_64/diy/* ./
         
     - name: SSH connection to Actions
       uses: P3TERX/ssh2actions@v1.0.0
@@ -95,7 +95,7 @@ jobs:
         make download -j8
         find dl -size -1024c -exec ls -l {} \;
         find dl -size -1024c -exec rm -f {} \;
-        cp -Rf build/Lienol_x86_64/diy/* ./
+
     - name: Compile the firmware
       id: compile
       run: |
