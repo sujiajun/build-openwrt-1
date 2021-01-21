@@ -37,12 +37,6 @@ jobs:
   build:
     runs-on: ubuntu-18.04
 
-    name: 编译 ${{matrix.target}}
-    strategy:
-      fail-fast: false
-      matrix:
-        target: [Lienol_x86_64]
-
     steps:
     - name: Checkout
       uses: actions/checkout@main
