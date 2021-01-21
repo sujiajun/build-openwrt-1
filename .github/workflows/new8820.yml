@@ -79,8 +79,8 @@ jobs:
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P2_SH
 
-        if [ -n "$(ls -A "build/${{matrix.target}}/diy" 2>/dev/null)" ]; then
-         cp -Rf build/${{matrix.target}}/diy/* ./
+        if [ -n "$(ls -A "build/Lienol_x86_64/diy" 2>/dev/null)" ]; then
+         cp -Rf build/Lienol_x86_64/diy/* ./
         fi
 
     - name: SSH connection to Actions
