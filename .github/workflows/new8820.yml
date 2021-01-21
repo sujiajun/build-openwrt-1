@@ -80,7 +80,7 @@ jobs:
         $GITHUB_WORKSPACE/$DIY_P2_SH
         
         - name: 加载自定义源码
-      run: |
+
         if [ -n "$(ls -A "build/Lienol_x86_64/diy" 2>/dev/null)" ]; then
          cp -Rf build/Lienol_x86_64/diy/* ./
         fi
