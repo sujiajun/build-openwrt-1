@@ -78,7 +78,8 @@ jobs:
         chmod +x $DIY_P2_SH
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P2_SH
-        cp -Rf build/Lienol_x86_64/diy/* ./
+         if [ -n "$(ls -A "build/${{matrix.target}}/diy" 2>/dev/null)" ]; then
+         cp -Rf build/${{matrix.target}}/diy/* ./
         
     - name: SSH connection to Actions
       uses: P3TERX/ssh2actions@v1.0.0
