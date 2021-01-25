@@ -1,3 +1,4 @@
+
 #
 # MT7621 Profiles
 #
@@ -389,7 +390,7 @@ define Device/gnubee_gb-pc2
 endef
 TARGET_DEVICES += gnubee_gb-pc2
 
-define Device/zte_e8820s
+define Device/hiwifi_hc5962
   BLOCKSIZE := 128k
   PAGESIZE := 2048
   KERNEL_SIZE := 4096k
@@ -399,11 +400,11 @@ define Device/zte_e8820s
   IMAGE/sysupgrade.bin := sysupgrade-tar | append-metadata
   IMAGE/factory.bin := append-kernel | pad-to $$(KERNEL_SIZE) | append-ubi | \
 	check-size
-  DEVICE_VENDOR := ZTE
-  DEVICE_MODEL := E8820S
+  DEVICE_VENDOR := HiWiFi
+  DEVICE_MODEL := HC5962
   DEVICE_PACKAGES := kmod-mt7603 kmod-mt76x2 kmod-usb3 wpad-openssl
 endef
-TARGET_DEVICES += zte_e8820s
+TARGET_DEVICES += hiwifi_hc5962
 
 define Device/iodata_wn-ax1167gr
   $(Device/uimage-lzma-loader)
@@ -829,6 +830,16 @@ define Device/phicomm_k2p
 endef
 TARGET_DEVICES += phicomm_k2p
 
+define Device/phicomm_k2p-32m
+  IMAGE_SIZE := 32128k
+  DEVICE_VENDOR := Phicomm
+  DEVICE_MODEL := K2P
+  DEVICE_VARIANT := 32M
+  SUPPORTED_DEVICES += k2p-32M
+  DEVICE_PACKAGES := kmod-mt7615d_dbdc
+endef
+TARGET_DEVICES += phicomm_k2p-32m
+
 define Device/planex_vr500
   $(Device/uimage-lzma-loader)
   IMAGE_SIZE := 65216k
@@ -1183,3 +1194,19 @@ define Device/zio_freezio
 	kmod-usb-ledtrig-usbport wpad-openssl
 endef
 TARGET_DEVICES += zio_freezio
+
+define Device/zte_e8820s
+  BLOCKSIZE := 128k
+  PAGESIZE := 2048
+  KERNEL_SIZE := 4096k
+  UBINIZE_OPTS := -E 5
+  IMAGE_SIZE := 32768k
+  IMAGES += factory.bin
+  IMAGE/sysupgrade.bin := sysupgrade-tar | append-metadata
+  IMAGE/factory.bin := append-kernel | pad-to $$(KERNEL_SIZE) | append-ubi | \
+	check-size
+  DEVICE_VENDOR := ZTE
+  DEVICE_MODEL := E8820S
+  DEVICE_PACKAGES := kmod-mt7603 kmod-mt76x2 kmod-usb3 wpad-openssl
+endef
+TARGET_DEVICES += zte_e8820s
