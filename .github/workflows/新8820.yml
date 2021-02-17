@@ -1,4 +1,3 @@
-
 #
 #
 # 感谢p3terx大神的一键编译脚本
@@ -6,7 +5,7 @@
 # Copyright (C) 2019 P3TERX <https://p3terx.com>
 # <https://github.com/P3TERX/Actions-OpenWrt.git>
 #
-name: 编译8820固件
+name: 11111111
 on:
   workflow_dispatch:
     inputs:
@@ -44,7 +43,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        target: [Lede_x86_64]
+        target: [Lienol_x86_64]
 
      # [Lede_x86_64,Lede_gl_mt300n_v2,Lede_nanopi_r2s,Lede_nanopi_r4s,Lede_newifi_d2,p2w_r619ac_128m,Lede_phicomm_k2p,Lede_phicomm_n1,Lede_redmi_ac2100,Lede_wankeyun,Lede_wndr3800,Lede_wndr4300_v1,Lede_wr703n_v1,Lede_xiaomi_r3pro,Lede_xiaoyu_c5,Lede_Raspberry_Pi4]
      
@@ -99,6 +98,7 @@ jobs:
         sudo timedatectl set-timezone "$TZ"
         sudo mkdir -p /workdir
         sudo chown $USER:$GROUPS /workdir
+
     - name: 下载${{matrix.target}}源码
       working-directory: /workdir
       run: |
@@ -108,8 +108,8 @@ jobs:
         cd openwrt
         if [ ${{matrix.target}} != openwrt ]; then
           rm -rf package/lienol/luci-app-timecontrol
-          rm -rf package/ntlf9t/{smartdns,luci-app-smartdns}
-          rm -rf package/ctcgfw/{luci-app-argon-config,luci-theme-argonv3}
+          rm -rf package/diy/luci-app-adguardhome
+          rm -rf package/ctcgfw/{luci-app-argon-config,luci-theme-argonv3,luci-app-adguardhome}
           rm -rf package/lean/{luci-app-netdata,luci-theme-argon,k3screenctrl}
         fi
         
@@ -135,6 +135,7 @@ jobs:
         if [ -n "$(ls -A "build/${{matrix.target}}/patches" 2>/dev/null)" ]; then
           find "build/${{matrix.target}}/patches" -type f -name '*.patch' -print0 | sort -z | xargs -I % -t -0 -n 1 sh -c "cat '%'  | patch -d './' -p1 --forward --no-backup-if-mismatch"
         fi
+        mkdir -p files/usr/bin/AdGuardHome/data
         if [ -n "$(ls -A "build/${{matrix.target}}/files" 2>/dev/null)" ]; then
          cp -rf build/${{matrix.target}}/files files
          chmod -R 777 build/${{matrix.target}}/files/* ./
@@ -198,6 +199,7 @@ jobs:
          grep '^CONFIG_TARGET.*DEVICE.*=y' .config | sed -r 's/.*DEVICE_(.*)=y/\1/' > NAME1
          [ -s NAME1 ] && echo "NAME1=$(cat NAME1)" >> $GITHUB_ENV
         fi
+
     - name: 上传bin文件夹(固件+ipk)在github空间
       uses: actions/upload-artifact@v2
       if: steps.compile.outputs.status == 'success' && env.UPLOAD_BIN_DIR == 'true'
