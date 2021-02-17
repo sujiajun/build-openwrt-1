@@ -1,4 +1,3 @@
-
 #
 # MT7621 Profiles
 #
@@ -309,7 +308,7 @@ define Device/xiaomi-ac2100
   IMAGE/kernel1.bin := append-kernel
   IMAGE/rootfs0.bin := append-ubi | check-size $$$$(IMAGE_SIZE)
   IMAGE/sysupgrade.bin := sysupgrade-tar | append-metadata
-  DEVICE_PACKAGES := kmod-mt7603 kmod-mt7615e wpad-openssl uboot-envtools
+  DEVICE_PACKAGES := kmod-mt7603 kmod-mt7615e wpad-basic uboot-envtools
 endef
 
 define Device/xiaomi_mi-ac2100
@@ -718,21 +717,3 @@ define Device/zbt-wg3526-32M
 	kmod-usb3 kmod-usb-ledtrig-usbport wpad-basic
 endef
 TARGET_DEVICES += zbt-wg3526-32M
-
-define Device/zte-e8820s
-  DTS := E8820S
-  DEVICE_TITLE := ZTE E8820S
-  BLOCKSIZE := 128k
-  PAGESIZE := 2048
-  KERNEL_SIZE := 2097152
-  UBINIZE_OPTS := -E 5
-  IMAGE_SIZE := $(ralink_default_fw_size_32M)
-  IMAGES += factory.bin
-  IMAGE/sysupgrade.bin := sysupgrade-tar | append-metadata
-  IMAGE/factory.bin := append-kernel | pad-to $$(KERNEL_SIZE) | append-ubi | \
-	check-size
-  DEVICE_VENDOR := zte
-  DEVICE_MODEL := e8820s
-  DEVICE_PACKAGES := kmod-mt7603 kmod-mt76x2 kmod-usb3 wpad-openssl
-endef
-TARGET_DEVICES += zte-e8820s
