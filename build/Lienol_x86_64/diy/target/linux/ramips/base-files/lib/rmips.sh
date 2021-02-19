@@ -233,7 +233,7 @@ ramips_board_detect() {
 		name="hc5962"
 		;;
 	*"e8820s")
-		name="zte_e8820s"
+		name="e8820s"
 		;;
 	*"HG255D")
 		name="hg255d"
