@@ -56,7 +56,7 @@ platform_do_upgrade() {
 		default_do_upgrade "$1"
 		;;
 	hc5962|\
-        zte,e8820s|\
+        e8820s|\
 	r6220|\
 	netgear,r6350|\
 	ubnt-erx|\
