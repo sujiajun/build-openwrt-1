@@ -718,8 +718,8 @@ define Device/zbt-wg3526-32M
 endef
 TARGET_DEVICES += zbt-wg3526-32M
 
-define Device/e8820s
-  DTS := E8820S
+define Device/zte_e8820s
+  DTS := ZTE_E8820S
   BLOCKSIZE := 128k
   PAGESIZE := 2048
   KERNEL_SIZE := 2097152
@@ -728,7 +728,7 @@ define Device/e8820s
   IMAGES += factory.bin
   IMAGE/sysupgrade.bin := sysupgrade-tar | append-metadata
   IMAGE/factory.bin := append-kernel | pad-to $$(KERNEL_SIZE) | append-ubi | check-size $$$$(IMAGE_SIZE)
-  DEVICE_TITLE := ZTE E8820S
+  DEVICE_TITLE := ZTE-E8820S
   DEVICE_PACKAGES := kmod-mt7603 kmod-mt76x2 kmod-usb3 wpad-basic
 endef
-TARGET_DEVICES += e8820s
+TARGET_DEVICES += zte_e8820s
