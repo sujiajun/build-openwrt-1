@@ -8,7 +8,7 @@
 
 / {
 	compatible = "zte,e8820s", "mediatek,mt7621-soc";
-	model = "ZTE E8820S";
+	model = "ZTE-E8820S";
 
 	aliases {
 		led-boot = &led_system;
