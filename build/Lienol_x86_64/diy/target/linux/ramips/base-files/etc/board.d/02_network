@@ -600,7 +600,7 @@ ramips_setup_macs()
 	hc5611|\
 	hc5661a|\
 	hc5962|\
-	zte,e8820s|\
+	e8820s|\
 	hiwifi,hc5861b)
 		lan_mac=`mtd_get_mac_ascii bdinfo "Vfac_mac "`
 		[ -n "$lan_mac" ] || lan_mac=$(cat /sys/class/net/eth0/address)
