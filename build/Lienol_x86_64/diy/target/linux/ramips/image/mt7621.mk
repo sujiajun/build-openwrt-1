@@ -731,4 +731,4 @@ define Device/e8820s
   DEVICE_TITLE := ZTE E8820S
   DEVICE_PACKAGES := kmod-mt7603 kmod-mt76x2 kmod-usb3 wpad-basic
 endef
-TARGET_DEVICES += E8820S
+TARGET_DEVICES += e8820s
