@@ -233,7 +233,7 @@ ramips_board_detect() {
 		name="hc5962"
 		;;
 	*"e8820s")
-		name="e8820s"
+		name="ZTE-E8820S"
 		;;
 	*"HG255D")
 		name="hg255d"
