@@ -719,7 +719,7 @@ endef
 TARGET_DEVICES += zbt-wg3526-32M
 
 define Device/zte_e8820s
-  DTS := ZTE_E8820S
+  DTS := E8820S
   BLOCKSIZE := 128k
   PAGESIZE := 2048
   KERNEL_SIZE := 2097152
