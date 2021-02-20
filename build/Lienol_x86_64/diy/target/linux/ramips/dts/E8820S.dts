@@ -11,15 +11,10 @@
 	model = "ZTE-E8820S";
 
 	aliases {
-		led-boot = &led_system;
-		led-failsafe = &led_system;
-		led-running = &led_status;
-		led-upgrade = &led_status;
-	};
-
-	memory@0 {
-		device_type = "memory";
-		reg = <0x0 0x10000000>;
+		led-boot = &led_sys;
+		led-failsafe = &led_sys;
+		led-running = &led_power;
+		led-upgrade = &led_power;
 	};
 
 	chosen {
@@ -29,26 +24,44 @@
 	leds {
 		compatible = "gpio-leds";
 
-		led_status: status {
-			label = "hc5962:white:status";
-			gpios = <&gpio0 6 GPIO_ACTIVE_LOW>;
+		led_sys: sys {
+			label = "e8820s:white:sys";
+			gpios = <&gpio 16 GPIO_ACTIVE_LOW>;
 		};
 
-		led_system: system {
-			label = "hc5962:red:system";
-			gpios = <&gpio0 7 GPIO_ACTIVE_LOW>;
-			panic-indicator;
+		led_power: power {
+			label = "e8820s:white:power";
+			gpios = <&gpio 3 GPIO_ACTIVE_LOW>;                                       
+		};
+
+		wlan2g {
+			label = "e8820s:white:wlan2g";
+			gpios = <&gpio 14 GPIO_ACTIVE_LOW>;
+		};
+
+		wlan5g {
+			label = "e8820s:white:wlan5g";
+			gpios = <&gpio 12 GPIO_ACTIVE_LOW>;
 		};
 	};
 
 	keys {
-		compatible = "gpio-keys-polled";
-		poll-interval = <20>;
+		compatible = "gpio-keys";
 
 		reset {
 			label = "reset";
-			gpios = <&gpio0 18 GPIO_ACTIVE_HIGH>;
+			gpios = <&gpio 18 GPIO_ACTIVE_LOW>;
 			linux,code = <KEY_RESTART>;
+		};
+                wps {
+                        label = "wps";
+                        gpios = <&gpio 8 GPIO_ACTIVE_LOW>;
+                        linux,code = <KEY_WPS_BUTTON>;
+                };
+		wifi {
+			label = "wifi";
+			gpios = <&gpio 10 GPIO_ACTIVE_LOW>;
+			linux,code = <KEY_RFKILL>;
 		};
 	};
 };
