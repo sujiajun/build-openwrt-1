@@ -1,4 +1,3 @@
-
 /dts-v1/;
 
 #include "mt7621.dtsi"
@@ -16,12 +15,12 @@
 		led-running = &led_status;
 		led-upgrade = &led_status;
 	};
-	
+
 	memory@0 {
 		device_type = "memory";
 		reg = <0x0 0x10000000>;
 	};
-	
+
 	chosen {
 		bootargs = "console=ttyS0,115200";
 	};
@@ -30,34 +29,20 @@
 		compatible = "gpio-leds";
 
 		led_system: system {
-			label = "e8820s:white:system";
-			gpios = <&gpio 16 GPIO_ACTIVE_LOW>;
+			label = "e8820s:red:system";
+			gpios = <&gpio0 3 GPIO_ACTIVE_LOW>;
+			panic-indicator;
 		};
-
-		led_status: status {
-			label = "e8820s:white:status";
-			gpios = <&gpio 3 GPIO_ACTIVE_LOW>;                                       
-		};
-
 	};
 
 	keys {
-		compatible = "gpio-keys";
+		compatible = "gpio-keys-polled";
+		poll-interval = <20>;
 
 		reset {
 			label = "reset";
-			gpios = <&gpio 18 GPIO_ACTIVE_LOW>;
+			gpios = <&gpio0 18 GPIO_ACTIVE_HIGH>;
 			linux,code = <KEY_RESTART>;
-		};
-                wps {
-                        label = "wps";
-                        gpios = <&gpio 8 GPIO_ACTIVE_LOW>;
-                        linux,code = <KEY_WPS_BUTTON>;
-                };
-		wifi {
-			label = "wifi";
-			gpios = <&gpio 10 GPIO_ACTIVE_LOW>;
-			linux,code = <KEY_RFKILL>;
 		};
 	};
 };
