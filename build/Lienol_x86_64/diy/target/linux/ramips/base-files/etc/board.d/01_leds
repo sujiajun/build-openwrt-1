@@ -455,10 +455,6 @@ youku-yk1)
 	set_wifi_led "$boardname:blue:air"
 	ucidef_set_led_switch "wan" "wan" "$boardname:blue:wan" "switch0" "0x10"
 	;;
-zte,e8820s)
-	ucidef_set_led_netdev "led-system" "system_led" "$boardname:white:system" "eth0" "tx rx"
-	ucidef_set_led_default "led-status" "status_led" "$boardname:white:status" "0x01"
-        ;;
 esac
 
 board_config_flush
