@@ -1,3 +1,4 @@
+
 /dts-v1/;
 
 #include "mt7621.dtsi"
@@ -28,9 +29,14 @@
 	leds {
 		compatible = "gpio-leds";
 
+		led_status: status {
+			label = "hc5962:white:status";
+			gpios = <&gpio0 6 GPIO_ACTIVE_LOW>;
+		};
+
 		led_system: system {
-			label = "e8820s:red:system";
-			gpios = <&gpio0 3 GPIO_ACTIVE_LOW>;
+			label = "hc5962:red:system";
+			gpios = <&gpio0 7 GPIO_ACTIVE_LOW>;
 			panic-indicator;
 		};
 	};
