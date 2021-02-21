@@ -30,8 +30,8 @@
 		compatible = "gpio-leds";
 
 		led_status: status {
-			label = "hc5962:white:status";
-			gpios = <&gpio0 6 GPIO_ACTIVE_LOW>;
+			label = "e8820s:white:status";
+			gpios = <&gpio 3 GPIO_ACTIVE_LOW>;
 		};
 
 		led_system: system {
