@@ -149,6 +149,11 @@
 	};
 };
 
+&ethernet {
+	mtd-mac-address = <&factory 0xe006>;
+	mediatek,portmap = "llllw";
+};
+
 &pinctrl {
 	state_default: pinctrl0 {
 		gpio {
