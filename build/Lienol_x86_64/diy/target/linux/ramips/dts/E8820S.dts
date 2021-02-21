@@ -13,8 +13,8 @@
 	aliases {
 		led-boot = &led_system;
 		led-failsafe = &led_system;
-		led-running = &led_status;
-		led-upgrade = &led_status;
+		led-running = &led_system;
+		led-upgrade = &led_system;
 	};
 
 	memory@0 {
@@ -29,14 +29,9 @@
 	leds {
 		compatible = "gpio-leds";
 
-		led_status: status {
-			label = "e8820s:white:status";
-			gpios = <&gpio 3 GPIO_ACTIVE_LOW>;
-		};
-
 		led_system: system {
-			label = "hc5962:red:system";
-			gpios = <&gpio0 7 GPIO_ACTIVE_LOW>;
+			label = "e8820s:white:system";
+			gpios = <&gpio0 3 GPIO_ACTIVE_LOW>;
 			panic-indicator;
 		};
 	};
