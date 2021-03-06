@@ -104,7 +104,7 @@ jobs:
       working-directory: /workdir
       run: |
         df -hT $PWD
-        git clone -b $REPO_BRANCH --single-branch $REPO_URL openwrt
+        git clone -b 21.02 $REPO_URL openwrt
         ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
         git clone -b main --single-branch https://github.com/281677160/Custom openwrt/common
         chmod +x openwrt/common/common.sh
